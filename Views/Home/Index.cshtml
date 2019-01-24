@@ -1,0 +1,29 @@
+﻿@model Contentful.Models.Homepage
+
+<div class="container" style="display:flex; margin-top:30px; justify-content:space-between;">
+
+    <div class="col-lg-2" style="">
+        <label style="margin-bottom:10px; font-size:20px;"><b>Kategoriler</b></label>
+        @Html.ActionLink("Tüm Kategoriler","Index","Home")
+        @foreach (var item in Model.Kategori)
+        {
+            @Html.ActionLink(item.Title, "Category", "Home", new { categoryID = item.Sys.Id }, null)<br />
+        }
+
+    </div>
+
+    <div class="col-lg-12" style="display:flex; align-items:center; justify-content:space-around; flex-wrap:wrap;">
+
+        @foreach (var item in Model.Urun)
+        {
+            <div style="margin-bottom:20px; border: 1px solid black; width:150px; padding: 20px; text-align:center; height:210px;">
+                <a href="@Url.Action("ProductDetails","Home",new {productID = item.Sys.Id })" style="display:flex;flex-direction:column; align-items:center;">
+                    @if (item.image != null)
+                    {<img src="@item.image.File.Url" width="100px;" height="100px" />}
+                    <span>@item.Title</span>
+                    <span><b>Fiyat : @item.Price₺</b></span>
+                </a>
+            </div>
+        }
+    </div>
+</div>

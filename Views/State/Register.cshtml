@@ -1,0 +1,29 @@
+﻿
+<h2>Kayıt Ol</h2>
+
+
+@using (Html.BeginForm("UserAdd", "State"))
+{
+<div style="display:flex; flex-direction:column;width:194px;">
+    <label>Kullanıcı Adı  @Html.TextBox("username")</label>
+    <label>Şifre  @Html.Password("password")</label>
+    @if (HttpContext.Current.Cache["City"] != null)
+    {
+        List<string> cities = (List<string>)HttpContext.Current.Cache["City"];
+        <select name="City" style="margin-bottom:10px;margin-top:10px;">
+            @foreach (var item in cities)
+            {
+                <option>@Html.DisplayFor(x => item)</option>
+            }
+        </select>
+    }
+    
+    <button type="submit">Kayıt Ol</button>
+
+
+
+
+
+</div>
+
+}

@@ -1,0 +1,14 @@
+﻿
+
+<h2>Giriş Yap</h2>
+
+@using (Html.BeginForm("UserControl",null))
+{
+<div style="display:flex; flex-direction:column;width:194px;">
+    <label>Kullanıcı Adı  @Html.TextBox("username")</label>
+    <label>Şifre  @Html.TextBox("password")</label>
+    <button type="submit">Giriş Yap</button>
+    <a href="@Url.Action("Register","State")">Kayıt Ol!</a>
+</div>
+}
+

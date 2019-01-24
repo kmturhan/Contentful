@@ -1,0 +1,12 @@
+﻿@model List<Contentful.Models.PageContent>
+
+
+@using Contentful.Core.Models
+
+@{
+    var htmlRenderer = new HtmlRenderer();
+    foreach (var item in Model)
+    {
+        @Html.Raw(htmlRenderer.ToHtml(item.text).Result)<br />
+    }
+}

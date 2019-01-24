@@ -1,0 +1,15 @@
+﻿@model List<Contentful.Models.Product>
+@using Contentful.Core.Models
+
+
+
+@{
+    var htmlRender = new HtmlRenderer();
+    foreach (var item in Model)
+    {
+        <h1>@item.Title.ToUpper()</h1>
+        if (item.Description != null)
+        { @Html.Raw(htmlRender.ToHtml(item.Description).Result) }
+
+    }
+}
